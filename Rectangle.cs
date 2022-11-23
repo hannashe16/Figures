@@ -1,4 +1,6 @@
-﻿namespace Figures
+﻿using System.Collections.Generic;
+
+namespace Figures
 {
     internal class Rectangle: Figure
     {
@@ -16,6 +18,16 @@
             rectangleLengh = BottomRight.X - TopLeft.X;
             rectangleWidth = TopLeft.Y - BottomRight.Y;
             return rectangleArea = rectangleLengh * rectangleWidth;
+        }
+
+        public override List<Point> GetListOfPoints()
+        {
+            List<Point> pointsOfRectangle = new List<Point>();
+            pointsOfRectangle.Add(TopLeft);
+            pointsOfRectangle.Add(BottomRight);
+            pointsOfRectangle.Add(new Point(BottomRight.X, TopLeft.Y));
+            pointsOfRectangle.Add(new Point(TopLeft.X, BottomRight.Y));
+            return pointsOfRectangle;
         }
     }
 }

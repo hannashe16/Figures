@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Figures
 {
@@ -26,6 +27,15 @@ namespace Figures
             double halfPerimeter = (sideApex12 + sideApex23 + sideApex13) / 2;
             return triangleArea =
                 Math.Sqrt(halfPerimeter * (halfPerimeter - sideApex12) * (halfPerimeter - sideApex23) * (halfPerimeter - sideApex13));
-        }  
+        }
+
+        public override List<Point> GetListOfPoints()
+        {
+            List<Point> pointsOfTriangle = new List<Point>();
+            pointsOfTriangle.Add(Apex1);
+            pointsOfTriangle.Add(Apex2);
+            pointsOfTriangle.Add(Apex3);
+            return pointsOfTriangle;
+        }
     }
 }
