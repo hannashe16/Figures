@@ -1,6 +1,6 @@
 ﻿namespace Figures
 {
-    internal class Figure
+    internal abstract class Figure
     {
         public Point TopLeft { get; set; }
         public Point BottomRight { get; set; }
