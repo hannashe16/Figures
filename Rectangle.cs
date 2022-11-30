@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace Figures
+﻿namespace Figures
 {
-    internal class Rectangle: Figure
+    internal class Rectangle: Figure, IFigureMover
     {
         public Point TopLeft { get; set; }
         public Point BottomRight { get; set; }
-        public Rectangle(Point topLeft, Point bottomRight):base(topLeft, bottomRight) 
+        public Rectangle(Point topLeft, Point bottomRight) 
         {
             TopLeft = topLeft;
             BottomRight = bottomRight;
@@ -20,14 +18,26 @@ namespace Figures
             return rectangleArea = rectangleLengh * rectangleWidth;
         }
 
-        public override List<Point> GetListOfPoints()
+        public void MoveFigureHorisontallly(double increment)
         {
-            List<Point> pointsOfRectangle = new List<Point>();
-            pointsOfRectangle.Add(TopLeft);
-            pointsOfRectangle.Add(BottomRight);
-            pointsOfRectangle.Add(new Point(BottomRight.X, TopLeft.Y));
-            pointsOfRectangle.Add(new Point(TopLeft.X, BottomRight.Y));
-            return pointsOfRectangle;
+            TopLeft.X += increment;
+            BottomRight.X += increment;
+        }
+
+        public void MoveFigureVertically(double increment)
+        {
+            TopLeft.Y += increment;
+            BottomRight.Y += increment;
+        }
+        public void MoveFigureTo(Point newPoint)
+        {
+            double rectangleLengh = 0, rectangleWidth = 0;
+            rectangleLengh = BottomRight.X - TopLeft.X;
+            rectangleWidth = TopLeft.Y - BottomRight.Y;
+            TopLeft.X = newPoint.X;
+            TopLeft.Y = newPoint.Y;           
+            BottomRight.X = newPoint.X + rectangleLengh;
+            BottomRight.Y = newPoint.Y - rectangleWidth;
         }
     }
 }

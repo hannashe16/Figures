@@ -1,33 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Figures
 {
-    internal class Square: Figure
+    internal class Square: Figure, IFigureMover
     {
         public Point TopLeft { get; set; }
-        public Point BottomRight { get; set; }
-        public Square(Point topLeft, Point bottomRight):base(topLeft, bottomRight)
+        public double Size { get; set; }
+        public Square(Point topLeft, double size)//:base()
         {
             TopLeft = topLeft;
-            BottomRight = bottomRight;
+            Size = size;
         }
 
         public override double GetArea()
         {
-            double squareSide = 0,  squareArea = 0;
-            squareSide = BottomRight.X - TopLeft.X;
-            return squareArea = Math.Pow(squareSide, 2);
+            double size = 0,  squareArea = 0;           
+            return squareArea = Math.Pow(size, 2);
         }
 
-        public override List<Point> GetListOfPoints()
+        public void MoveFigureHorisontallly(double increment)
         {
-            List<Point> pointsOfSquare = new List<Point>();
-            pointsOfSquare.Add(TopLeft);
-            pointsOfSquare.Add(BottomRight);
-            pointsOfSquare.Add(new Point(BottomRight.X, TopLeft.Y));
-            pointsOfSquare.Add(new Point(TopLeft.X, BottomRight.Y));
-            return pointsOfSquare;
+            TopLeft.X += increment;
+        }
+
+        public void MoveFigureVertically(double increment)
+        {
+            TopLeft.Y += increment;
+        }
+
+        public void MoveFigureTo(Point newPoint)
+        {
+            TopLeft.X = newPoint.X;
+            TopLeft.Y = newPoint.Y;
         }
     }
 }

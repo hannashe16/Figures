@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Figures
 {
-    internal class Triangle: Figure
+    internal class Triangle: Figure, IFigureMover
     {
         public Point Apex1 { get; set; }
         public Point Apex2 { get; set; }
         public Point Apex3 { get; set; }
 
-        public Triangle (Point apex1, Point apex2, Point apex3):base(apex1, apex2)
+        public Triangle (Point apex1, Point apex2, Point apex3)
         {
 
             Apex1 = apex1;
@@ -29,13 +28,25 @@ namespace Figures
                 Math.Sqrt(halfPerimeter * (halfPerimeter - sideApex12) * (halfPerimeter - sideApex23) * (halfPerimeter - sideApex13));
         }
 
-        public override List<Point> GetListOfPoints()
+        public void MoveFigureHorisontallly(double increment)
         {
-            List<Point> pointsOfTriangle = new List<Point>();
-            pointsOfTriangle.Add(Apex1);
-            pointsOfTriangle.Add(Apex2);
-            pointsOfTriangle.Add(Apex3);
-            return pointsOfTriangle;
+            Apex1.X += increment;
+            Apex2.X += increment;
+            Apex3.X += increment;
+        }
+
+        public void MoveFigureVertically(double increment)
+        {
+            Apex1.Y += increment;
+            Apex2.Y += increment;
+            Apex3.Y += increment;
+        }
+
+        public void MoveFigureTo(Point newPoint)
+        {
+            Apex1.X = newPoint.X;
+            Apex1.Y = newPoint.Y;
+            // как перенести остальные вершины?
         }
     }
 }
