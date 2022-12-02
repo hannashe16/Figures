@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Configuration;
 
 namespace Figures
 {
-    internal class Circle: Figure, IFigureMover
+    internal class Circle: Figure
     {
         public Point CircleCenter { get; set; }
         double Radius { get; set; }
-        public Circle(Point circleCenter, double radius)
+
+        public Circle(Point circleCenter, double radius, OutlineFigureSettings outlineCircleSettings, FillerFigureSettings fillerCircleSettings): base(outlineCircleSettings, fillerCircleSettings)
         {
             CircleCenter = circleCenter;
             Radius = radius;
@@ -17,18 +19,29 @@ namespace Figures
             double radius = 0, circleArea = 0;
             return circleArea = Math.PI * Math.Pow(radius, 2);
         }
-        public void MoveFigureHorisontallly(double increment)
+        public override void MoveFigureHorisontallly(double increment)
         {
             CircleCenter.X += increment;
         }
-        public void MoveFigureVertically(double increment)
+        public override void MoveFigureVertically(double increment)
         {
             CircleCenter.Y += increment;
         }
-        public void MoveFigureTo(Point newPoint)
+        public override void MoveFigureTo(Point newPoint)
         {
             CircleCenter.X = newPoint.X;
             CircleCenter.Y = newPoint.Y;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is Circle)
+            {
+                Circle circle = obj as Circle;
+                return (circle.Radius == Radius) &&
+                    (circle.CircleCenter == CircleCenter) &&
+                    base.Equals(obj);
+            }
+            return false;
         }
     }
 }

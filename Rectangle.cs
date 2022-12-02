@@ -1,10 +1,11 @@
 ﻿namespace Figures
 {
-    internal class Rectangle: Figure, IFigureMover
+    internal class Rectangle: Figure
     {
         public Point TopLeft { get; set; }
         public Point BottomRight { get; set; }
-        public Rectangle(Point topLeft, Point bottomRight) 
+
+        public Rectangle(Point topLeft, Point bottomRight, OutlineFigureSettings outlineRectangleSettings, FillerFigureSettings fillerRectangleSettings): base(outlineRectangleSettings, fillerRectangleSettings) 
         {
             TopLeft = topLeft;
             BottomRight = bottomRight;
@@ -18,18 +19,18 @@
             return rectangleArea = rectangleLengh * rectangleWidth;
         }
 
-        public void MoveFigureHorisontallly(double increment)
+        public override void MoveFigureHorisontallly(double increment)
         {
             TopLeft.X += increment;
             BottomRight.X += increment;
         }
 
-        public void MoveFigureVertically(double increment)
+        public override void MoveFigureVertically(double increment)
         {
             TopLeft.Y += increment;
             BottomRight.Y += increment;
         }
-        public void MoveFigureTo(Point newPoint)
+        public override void MoveFigureTo(Point newPoint)
         {
             double rectangleLengh = 0, rectangleWidth = 0;
             rectangleLengh = BottomRight.X - TopLeft.X;

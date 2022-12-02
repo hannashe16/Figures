@@ -2,11 +2,12 @@
 
 namespace Figures
 {
-    internal class Square: Figure, IFigureMover
+    internal class Square: Figure
     {
         public Point TopLeft { get; set; }
         public double Size { get; set; }
-        public Square(Point topLeft, double size)//:base()
+
+        public Square(Point topLeft, double size, OutlineFigureSettings outlineSquareSettings, FillerFigureSettings fillerSquareSettings): base(outlineSquareSettings, fillerSquareSettings)
         {
             TopLeft = topLeft;
             Size = size;
@@ -18,17 +19,17 @@ namespace Figures
             return squareArea = Math.Pow(size, 2);
         }
 
-        public void MoveFigureHorisontallly(double increment)
+        public override void MoveFigureHorisontallly(double increment)
         {
             TopLeft.X += increment;
         }
 
-        public void MoveFigureVertically(double increment)
+        public override void MoveFigureVertically(double increment)
         {
             TopLeft.Y += increment;
         }
 
-        public void MoveFigureTo(Point newPoint)
+        public override void MoveFigureTo(Point newPoint)
         {
             TopLeft.X = newPoint.X;
             TopLeft.Y = newPoint.Y;
