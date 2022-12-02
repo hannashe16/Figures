@@ -10,5 +10,14 @@
             X = x;
             Y = y;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj is Point)
+            {
+                Point point = obj as Point;
+                return point.X == X && point.Y == Y;
+            }
+            return false;
+        }
     }
 }

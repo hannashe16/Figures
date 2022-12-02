@@ -40,5 +40,16 @@
             BottomRight.X = newPoint.X + rectangleLengh;
             BottomRight.Y = newPoint.Y - rectangleWidth;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj is Rectangle)
+            {
+                Rectangle rectangle = obj as Rectangle;
+                return TopLeft.Equals(rectangle.TopLeft) &&
+                    BottomRight.Equals(rectangle.BottomRight) &&
+                    base.Equals(obj);
+            }
+            return false;
+        }
     }
 }

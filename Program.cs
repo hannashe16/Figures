@@ -44,6 +44,18 @@ namespace Figures
             Circle circle1 = new Circle(new Point(0, 0), 1, new OutlineFigureSettings("bold line", "red"), new FillerFigureSettings("gradient", "white"));
             Circle circle2 = new Circle(new Point(0, 0), 1, new OutlineFigureSettings("bold line", "red"), new FillerFigureSettings("gradient", "white"));
             bool res = circle1.Equals(circle2);
+
+            Triangle triangle5 = new Triangle(new Point(2, 7), new Point(4, 5), new Point(1, 1), new OutlineFigureSettings("thin lineline", "black"), new FillerFigureSettings("picture", "black"));
+            Triangle triangle6 = new Triangle(new Point(2, 7), new Point(4, 5), new Point(1, 1), new OutlineFigureSettings("thin lineline", "black"), new FillerFigureSettings("picture", "black"));
+            bool res2 = triangle5.Equals(triangle6);
+
+            Rectangle rectangle1 = new Rectangle(new Point(2, 4), new Point(6, 0), new OutlineFigureSettings("dotted line", "blue"), new FillerFigureSettings("gradient", "white"));
+            Rectangle rectangle2 = new Rectangle(new Point(2, 4), new Point(6, 0), new OutlineFigureSettings("dotted line", "blue"), new FillerFigureSettings("gradient", "white"));
+            bool res3 = rectangle1.Equals(rectangle2);
+
+            Square square1 = new Square(new Point(2, 4), 6, new OutlineFigureSettings("bold line", "red"), new FillerFigureSettings("texture", "black"));
+            Square square2 = new Square(new Point(2, 4), 6, new OutlineFigureSettings("bold line", "red"), new FillerFigureSettings("texture", "black"));
+            bool res4 = square1.Equals(square2);
         }
     }
 }

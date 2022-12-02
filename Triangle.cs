@@ -47,5 +47,17 @@ namespace Figures
             Apex1.Y = newPoint.Y;
             // как перенести остальные вершины?
         }
+        public override bool Equals(object obj)
+        {
+            if (obj is Triangle)
+            {
+                Triangle triangle = obj as Triangle;
+                return Apex1.Equals(triangle.Apex1) && 
+                    Apex2.Equals(triangle.Apex2) && 
+                    Apex3.Equals(triangle.Apex3) &&
+                    base.Equals(obj);
+            }
+            return false;
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 
 namespace Figures
 {
@@ -38,7 +37,7 @@ namespace Figures
             {
                 Circle circle = obj as Circle;
                 return (circle.Radius == Radius) &&
-                    (circle.CircleCenter == CircleCenter) &&
+                    CircleCenter.Equals(circle.CircleCenter) &&
                     base.Equals(obj);
             }
             return false;

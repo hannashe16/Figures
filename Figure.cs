@@ -21,10 +21,9 @@
             if (obj is Figure)
             {
                 Figure figure = obj as Figure;
-                return figure.OutlineFigureSettings == OutlineFigureSettings &&
-                    figure.FillerFigureSettings == FillerFigureSettings &&                  
-                    OutlineFigureSettings.Equals(obj) &&
-                    FillerFigureSettings.Equals(obj);
+                return
+                    OutlineFigureSettings.Equals(figure.OutlineFigureSettings) &&
+                    FillerFigureSettings.Equals(figure.FillerFigureSettings);
             }
             return false;
         }

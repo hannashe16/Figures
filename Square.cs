@@ -34,5 +34,16 @@ namespace Figures
             TopLeft.X = newPoint.X;
             TopLeft.Y = newPoint.Y;
         }
+        public override bool Equals(object obj)
+        {
+            if (obj is Square)
+            {
+                Square square = obj as Square;
+                return (square.Size == Size) &&
+                    TopLeft.Equals(square.TopLeft) &&
+                    base.Equals(obj);
+            }
+            return false;
+        }
     }
 }
